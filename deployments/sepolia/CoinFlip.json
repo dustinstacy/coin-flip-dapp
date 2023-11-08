@@ -1,0 +1,166 @@
+{
+  "address": "0x3117f23eE97E54371d6FFB63B9e30a5f6062b611",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "minimumWager_",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "minimum",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "sent",
+          "type": "uint256"
+        }
+      ],
+      "name": "CoinFlip__NotEnoughWagered",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "CoinFlip__TransferFailed",
+      "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "entrantsGuess",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "result",
+          "type": "uint256"
+        }
+      ],
+      "name": "CoinFlipResult",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "entrant",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "entrantsWager",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "entrantsGuess",
+          "type": "uint256"
+        }
+      ],
+      "name": "WagerEntered",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "entrantsGuess",
+          "type": "uint256"
+        }
+      ],
+      "name": "enterWager",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0xa51f7aab1c29e1701046cbf86ed884259fec10c984aa02a3290197dcf630ca90",
+  "receipt": {
+    "to": null,
+    "from": "0x3ef270a74CaAe5Ca4b740a66497085abBf236655",
+    "contractAddress": "0x3117f23eE97E54371d6FFB63B9e30a5f6062b611",
+    "transactionIndex": 33,
+    "gasUsed": "283826",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x564b0d152b598e5d0333d0121bc924b229bca3cef65a53165aa68d879846d9e5",
+    "transactionHash": "0xa51f7aab1c29e1701046cbf86ed884259fec10c984aa02a3290197dcf630ca90",
+    "logs": [],
+    "blockNumber": 4654815,
+    "cumulativeGasUsed": "6605158",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [
+    "100000000000000000"
+  ],
+  "numDeployments": 1,
+  "solcInputHash": "5ac81f0a774db6086810fb3d55ec1adc",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"minimumWager_\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"minimum\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"sent\",\"type\":\"uint256\"}],\"name\":\"CoinFlip__NotEnoughWagered\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"CoinFlip__TransferFailed\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"entrantsGuess\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"result\",\"type\":\"uint256\"}],\"name\":\"CoinFlipResult\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"entrant\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"entrantsWager\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"entrantsGuess\",\"type\":\"uint256\"}],\"name\":\"WagerEntered\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"entrantsGuess\",\"type\":\"uint256\"}],\"name\":\"enterWager\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"errors\":{\"CoinFlip__NotEnoughWagered(uint256,uint256)\":[{\"notice\":\"Custom Errors ///\"}]},\"kind\":\"user\",\"methods\":{\"enterWager(uint256)\":{\"notice\":\"Main Functions ///\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/CoinFlip.sol\":\"CoinFlip\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"contracts/CoinFlip.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.19;\\n\\n/////////////////////\\n/// Custom Errors ///\\n/////////////////////\\n\\nerror CoinFlip__NotEnoughWagered(uint256 minimum, uint256 sent);\\nerror CoinFlip__TransferFailed();\\n\\ncontract CoinFlip {\\n    uint256 private immutable _minimumWager;\\n    uint256 private coinFlipResult;\\n    uint256 private lastTimeStamp;\\n\\n    event WagerEntered(\\n        address indexed entrant,\\n        uint256 entrantsWager,\\n        uint256 entrantsGuess\\n    );\\n\\n    event CoinFlipResult(uint256 entrantsGuess, uint256 result);\\n\\n    constructor(uint256 minimumWager_) {\\n        _minimumWager = minimumWager_;\\n    }\\n\\n    //////////////////////\\n    /// Main Functions ///\\n    //////////////////////\\n\\n    function enterWager(uint256 entrantsGuess) public payable {\\n        if (msg.value < _minimumWager) {\\n            revert CoinFlip__NotEnoughWagered(_minimumWager, msg.value);\\n        }\\n        lastTimeStamp = block.timestamp;\\n        coinFlipResult = lastTimeStamp % 2;\\n        emit WagerEntered(msg.sender, msg.value, entrantsGuess);\\n        fulfillRandomCoinFlipResult(msg.sender, msg.value, entrantsGuess);\\n    }\\n\\n    function fulfillRandomCoinFlipResult(\\n        address entrant,\\n        uint256 entrantsWager,\\n        uint256 entrantsGuess\\n    ) private {\\n        if (entrantsGuess == coinFlipResult) {\\n            (bool success, ) = entrant.call{value: entrantsWager * 2}(\\\"\\\");\\n            if (!success) {\\n                revert CoinFlip__TransferFailed();\\n            }\\n        }\\n        emit CoinFlipResult(entrantsGuess, coinFlipResult);\\n    }\\n}\\n\",\"keccak256\":\"0x8dbe790475d95246e54735cc2eebdad76f4ab74284e0bc54c90cf63768364ddc\",\"license\":\"MIT\"}},\"version\":1}",
+  "bytecode": "0x60a060405234801561001057600080fd5b506040516104ef3803806104ef8339818101604052810190610032919061007b565b8060808181525050506100a8565b600080fd5b6000819050919050565b61005881610045565b811461006357600080fd5b50565b6000815190506100758161004f565b92915050565b60006020828403121561009157610090610040565b5b600061009f84828501610066565b91505092915050565b6080516104276100c86000396000818160410152606901526104276000f3fe60806040526004361061001e5760003560e01c8063860a069414610023575b600080fd5b61003d60048036038101906100389190610275565b61003f565b005b7f00000000000000000000000000000000000000000000000000000000000000003410156100c6577f0000000000000000000000000000000000000000000000000000000000000000346040517fa08b4f670000000000000000000000000000000000000000000000000000000081526004016100bd9291906102b1565b60405180910390fd5b4260018190555060026001546100dc9190610309565b6000819055503373ffffffffffffffffffffffffffffffffffffffff167ff755ecaf3a1f0184d84dd3c4098aa02d8e54070ee3cc691e1c7fa63ca28e2ed2348360405161012a9291906102b1565b60405180910390a261013d333483610140565b50565b60005481036101fa5760008373ffffffffffffffffffffffffffffffffffffffff1660028461016f9190610369565b60405161017b906103dc565b60006040518083038185875af1925050503d80600081146101b8576040519150601f19603f3d011682016040523d82523d6000602084013e6101bd565b606091505b50509050806101f8576040517f3d85c9d500000000000000000000000000000000000000000000000000000000815260040160405180910390fd5b505b7fee48f52b31d1fcac5d219c1b96459ab86b6bc8ab4dd1e1702628ec965f9610088160005460405161022d9291906102b1565b60405180910390a1505050565b600080fd5b6000819050919050565b6102528161023f565b811461025d57600080fd5b50565b60008135905061026f81610249565b92915050565b60006020828403121561028b5761028a61023a565b5b600061029984828501610260565b91505092915050565b6102ab8161023f565b82525050565b60006040820190506102c660008301856102a2565b6102d360208301846102a2565b9392505050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052601260045260246000fd5b60006103148261023f565b915061031f8361023f565b92508261032f5761032e6102da565b5b828206905092915050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052601160045260246000fd5b60006103748261023f565b915061037f8361023f565b925082820261038d8161023f565b915082820484148315176103a4576103a361033a565b5b5092915050565b600081905092915050565b50565b60006103c66000836103ab565b91506103d1826103b6565b600082019050919050565b60006103e7826103b9565b915081905091905056fea2646970667358221220374a53e48e04d88eec54da23d6e7f021bc7846ceeb1c1528e38bdea1431e255164736f6c63430008130033",
+  "deployedBytecode": "0x60806040526004361061001e5760003560e01c8063860a069414610023575b600080fd5b61003d60048036038101906100389190610275565b61003f565b005b7f00000000000000000000000000000000000000000000000000000000000000003410156100c6577f0000000000000000000000000000000000000000000000000000000000000000346040517fa08b4f670000000000000000000000000000000000000000000000000000000081526004016100bd9291906102b1565b60405180910390fd5b4260018190555060026001546100dc9190610309565b6000819055503373ffffffffffffffffffffffffffffffffffffffff167ff755ecaf3a1f0184d84dd3c4098aa02d8e54070ee3cc691e1c7fa63ca28e2ed2348360405161012a9291906102b1565b60405180910390a261013d333483610140565b50565b60005481036101fa5760008373ffffffffffffffffffffffffffffffffffffffff1660028461016f9190610369565b60405161017b906103dc565b60006040518083038185875af1925050503d80600081146101b8576040519150601f19603f3d011682016040523d82523d6000602084013e6101bd565b606091505b50509050806101f8576040517f3d85c9d500000000000000000000000000000000000000000000000000000000815260040160405180910390fd5b505b7fee48f52b31d1fcac5d219c1b96459ab86b6bc8ab4dd1e1702628ec965f9610088160005460405161022d9291906102b1565b60405180910390a1505050565b600080fd5b6000819050919050565b6102528161023f565b811461025d57600080fd5b50565b60008135905061026f81610249565b92915050565b60006020828403121561028b5761028a61023a565b5b600061029984828501610260565b91505092915050565b6102ab8161023f565b82525050565b60006040820190506102c660008301856102a2565b6102d360208301846102a2565b9392505050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052601260045260246000fd5b60006103148261023f565b915061031f8361023f565b92508261032f5761032e6102da565b5b828206905092915050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052601160045260246000fd5b60006103748261023f565b915061037f8361023f565b925082820261038d8161023f565b915082820484148315176103a4576103a361033a565b5b5092915050565b600081905092915050565b50565b60006103c66000836103ab565b91506103d1826103b6565b600082019050919050565b60006103e7826103b9565b915081905091905056fea2646970667358221220374a53e48e04d88eec54da23d6e7f021bc7846ceeb1c1528e38bdea1431e255164736f6c63430008130033",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "errors": {
+      "CoinFlip__NotEnoughWagered(uint256,uint256)": [
+        {
+          "notice": "Custom Errors ///"
+        }
+      ]
+    },
+    "kind": "user",
+    "methods": {
+      "enterWager(uint256)": {
+        "notice": "Main Functions ///"
+      }
+    },
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 14,
+        "contract": "contracts/CoinFlip.sol:CoinFlip",
+        "label": "coinFlipResult",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 16,
+        "contract": "contracts/CoinFlip.sol:CoinFlip",
+        "label": "lastTimeStamp",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_uint256"
+      }
+    ],
+    "types": {
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  }
+}

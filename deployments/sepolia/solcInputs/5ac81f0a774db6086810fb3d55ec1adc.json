@@ -1,0 +1,35 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/CoinFlip.sol": {
+      "content": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.19;\n\n/////////////////////\n/// Custom Errors ///\n/////////////////////\n\nerror CoinFlip__NotEnoughWagered(uint256 minimum, uint256 sent);\nerror CoinFlip__TransferFailed();\n\ncontract CoinFlip {\n    uint256 private immutable _minimumWager;\n    uint256 private coinFlipResult;\n    uint256 private lastTimeStamp;\n\n    event WagerEntered(\n        address indexed entrant,\n        uint256 entrantsWager,\n        uint256 entrantsGuess\n    );\n\n    event CoinFlipResult(uint256 entrantsGuess, uint256 result);\n\n    constructor(uint256 minimumWager_) {\n        _minimumWager = minimumWager_;\n    }\n\n    //////////////////////\n    /// Main Functions ///\n    //////////////////////\n\n    function enterWager(uint256 entrantsGuess) public payable {\n        if (msg.value < _minimumWager) {\n            revert CoinFlip__NotEnoughWagered(_minimumWager, msg.value);\n        }\n        lastTimeStamp = block.timestamp;\n        coinFlipResult = lastTimeStamp % 2;\n        emit WagerEntered(msg.sender, msg.value, entrantsGuess);\n        fulfillRandomCoinFlipResult(msg.sender, msg.value, entrantsGuess);\n    }\n\n    function fulfillRandomCoinFlipResult(\n        address entrant,\n        uint256 entrantsWager,\n        uint256 entrantsGuess\n    ) private {\n        if (entrantsGuess == coinFlipResult) {\n            (bool success, ) = entrant.call{value: entrantsWager * 2}(\"\");\n            if (!success) {\n                revert CoinFlip__TransferFailed();\n            }\n        }\n        emit CoinFlipResult(entrantsGuess, coinFlipResult);\n    }\n}\n"
+    }
+  },
+  "settings": {
+    "optimizer": {
+      "enabled": false,
+      "runs": 200
+    },
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode",
+          "evm.deployedBytecode",
+          "evm.methodIdentifiers",
+          "metadata",
+          "devdoc",
+          "userdoc",
+          "storageLayout",
+          "evm.gasEstimates"
+        ],
+        "": [
+          "ast"
+        ]
+      }
+    },
+    "metadata": {
+      "useLiteralContent": true
+    }
+  }
+}
