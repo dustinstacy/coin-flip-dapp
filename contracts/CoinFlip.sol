@@ -7,13 +7,12 @@ pragma solidity ^0.8.19;
 
 error CoinFlip__NotEnoughWagered(uint256 minimum, uint256 sent);
 error CoinFlip__TransferFailed();
-error CoinFlip__NotOwner();
 
 contract CoinFlip {
-    uint256 private immutable _minimumWager;
-    address private immutable _owner;
-    uint256 private coinFlipResult;
+    address private immutable i_owner;
+    uint256 private immutable i_minimumWager;
     uint256 private lastTimeStamp;
+    uint256 private coinFlipResult;
 
     event WagerEntered(
         address indexed entrant,
@@ -23,34 +22,21 @@ contract CoinFlip {
 
     event CoinFlipResult(uint256 entrantsGuess, uint256 result);
 
-    constructor(uint256 minimumWager_) {
-        _minimumWager = minimumWager_;
-        _owner = msg.sender;
-    }
-
-    /////////////////
-    /// Modifiers ///
-    /////////////////
-
-    modifier onlyOwner() {
-        if (msg.sender != _owner) {
-            revert CoinFlip__NotOwner();
-        }
-        _;
+    constructor(uint256 minimumWager) {
+        i_minimumWager = minimumWager;
+        i_owner = msg.sender;
     }
 
     //////////////////////
     /// Main Functions ///
     //////////////////////
 
-    function fundContract() public payable onlyOwner {}
+    function fundContract() public payable {}
 
     function enterWager(uint256 entrantsGuess) public payable {
-        if (msg.value < _minimumWager) {
-            revert CoinFlip__NotEnoughWagered(_minimumWager, msg.value);
+        if (msg.value < i_minimumWager) {
+            revert CoinFlip__NotEnoughWagered(i_minimumWager, msg.value);
         }
-        lastTimeStamp = block.timestamp;
-        coinFlipResult = lastTimeStamp % 2;
         emit WagerEntered(msg.sender, msg.value, entrantsGuess);
         fulfillRandomCoinFlipResult(msg.sender, msg.value, entrantsGuess);
     }
@@ -60,6 +46,8 @@ contract CoinFlip {
         uint256 entrantsWager,
         uint256 entrantsGuess
     ) private {
+        lastTimeStamp = block.timestamp;
+        coinFlipResult = lastTimeStamp % 2;
         if (entrantsGuess == coinFlipResult) {
             (bool success, ) = entrant.call{value: entrantsWager * 2}("");
             if (!success) {
