@@ -13,7 +13,7 @@ describe('Coin Flip Dapp', () => {
 
     const HEADS = 0
     const TAILS = 1
-    const WAGERAMOUNT = ethers.parseEther('0.1')
+    const MINIMUMWAGER = networkConfig[network.name].minimumWager!
 
     beforeEach(async () => {
         const accounts = await ethers.getSigners()
@@ -48,12 +48,24 @@ describe('Coin Flip Dapp', () => {
     })
 
     describe('enterWager', () => {
-        it('should revert if minimum wager amount is not met', async () => {})
-        it('should set the last time stamp variable to the current timestamp', async () => {})
-        it('should properly set the coin flip result value to 0 or 1', async () => {})
-        it('should emit a Wager Entered event', async () => {})
+        it('should revert if minimum wager amount is not met', async () => {
+            await expect(coinFlipContract.enterWager(HEADS)).to.be.revertedWithCustomError(
+                coinFlipContract,
+                'CoinFlip__NotEnoughWagered'
+            )
+        })
+
+        it('should emit a Wager Entered event', async () => {
+            await expect(
+                coinFlipContract.enterWager(TAILS, {
+                    value: MINIMUMWAGER.toString(),
+                })
+            ).to.emit(coinFlipContract, 'WagerEntered')
+        })
     })
     describe('fulfillRandomCoinFlipResult', () => {
+        it('should set the last time stamp variable to the current timestamp', async () => {})
+        it('should properly set the coin flip result value to 0 or 1', async () => {})
         it('should only return double the entrants wager if they guess correctly', async () => {})
         it('should emit a Coin Flip Result event', async () => {})
     })
