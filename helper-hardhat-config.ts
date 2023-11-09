@@ -1,11 +1,14 @@
+import { ethers } from 'hardhat'
 import { networkConfigInfo } from './global'
 
 export const networkConfig: networkConfigInfo = {
     hardhat: {
-        blockConfirmations: 5,
+        blockConfirmations: 1,
+        minimumWager: ethers.parseEther('0.1'),
     },
     sepolia: {
-        blockConfirmations: 5,
+        blockConfirmations: 1,
+        minimumWager: ethers.parseEther('0.1'),
     },
 }
 

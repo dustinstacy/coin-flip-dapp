@@ -1,7 +1,9 @@
 import { Address } from 'hardhat-deploy/dist/types'
 import { CoinFlip } from '../typechain-types'
 import { Signer } from 'ethers'
-import { deployments, ethers } from 'hardhat'
+import { deployments, ethers, network } from 'hardhat'
+import { expect } from 'chai'
+import { networkConfig } from '../helper-hardhat-config'
 
 describe('Coin Flip Dapp', () => {
     let coinFlipContract: CoinFlip
@@ -25,9 +27,16 @@ describe('Coin Flip Dapp', () => {
     })
 
     describe('contstructor', () => {
-        it('should properly set the minimum wager amount', async () => {})
-        it('should properly set the contract owner', async () => {})
+        it('should properly set the minimum wager amount', async () => {
+            const minimumWager = await coinFlipContract.getMinimumWager()
+            expect(minimumWager).to.equal(networkConfig[network.name].minimumWager)
+        })
+        it('should properly set the contract owner', async () => {
+            const owner = await coinFlipContract.getOwner()
+            expect(owner).to.equal(await deployer.getAddress())
+        })
     })
+
     describe('addFunds', async () => {
         it('should revert if sender is not owner', async () => {})
         it('should increase the contract balance by sent amount', async () => {})
