@@ -7,9 +7,11 @@ pragma solidity ^0.8.19;
 
 error CoinFlip__NotEnoughWagered(uint256 minimum, uint256 sent);
 error CoinFlip__TransferFailed();
+error CoinFlip__NotOwner();
 
 contract CoinFlip {
     uint256 private immutable _minimumWager;
+    address private immutable _owner;
     uint256 private coinFlipResult;
     uint256 private lastTimeStamp;
 
@@ -23,11 +25,25 @@ contract CoinFlip {
 
     constructor(uint256 minimumWager_) {
         _minimumWager = minimumWager_;
+        _owner = msg.sender;
+    }
+
+    /////////////////
+    /// Modifiers ///
+    /////////////////
+
+    modifier onlyOwner() {
+        if (msg.sender != _owner) {
+            revert CoinFlip__NotOwner();
+        }
+        _;
     }
 
     //////////////////////
     /// Main Functions ///
     //////////////////////
+
+    function fundContract() public payable onlyOwner {}
 
     function enterWager(uint256 entrantsGuess) public payable {
         if (msg.value < _minimumWager) {
