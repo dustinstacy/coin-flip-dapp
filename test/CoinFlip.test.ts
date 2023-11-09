@@ -38,9 +38,15 @@ describe('Coin Flip Dapp', () => {
     })
 
     describe('addFunds', async () => {
-        it('should revert if sender is not owner', async () => {})
-        it('should increase the contract balance by sent amount', async () => {})
+        it('should increase the contract balance by sent amount', async () => {
+            const amountSent = ethers.parseEther('10')
+            const tx = await coinFlipContract.fundContract({ value: amountSent })
+            await tx.wait(1)
+            const contractBalance = await ethers.provider.getBalance(coinFlipAddress)
+            expect(contractBalance).to.equal(amountSent)
+        })
     })
+
     describe('enterWager', () => {
         it('should revert if minimum wager amount is not met', async () => {})
         it('should set the last time stamp variable to the current timestamp', async () => {})
