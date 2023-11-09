@@ -16,8 +16,8 @@ contract CoinFlip {
 
     event WagerEntered(
         address indexed entrant,
-        uint256 entrantsWager,
-        uint256 entrantsGuess
+        uint256 indexed entrantsWager,
+        uint256 indexed entrantsGuess
     );
 
     event CoinFlipResult(uint256 entrantsGuess, uint256 result);
@@ -25,6 +25,7 @@ contract CoinFlip {
     constructor(uint256 minimumWager) {
         i_minimumWager = minimumWager;
         i_owner = msg.sender;
+        lastTimeStamp = block.timestamp;
     }
 
     //////////////////////
@@ -38,14 +39,13 @@ contract CoinFlip {
             revert CoinFlip__NotEnoughWagered(i_minimumWager, msg.value);
         }
         emit WagerEntered(msg.sender, msg.value, entrantsGuess);
-        fulfillRandomCoinFlipResult(msg.sender, msg.value, entrantsGuess);
     }
 
     function fulfillRandomCoinFlipResult(
         address entrant,
         uint256 entrantsWager,
         uint256 entrantsGuess
-    ) private {
+    ) public {
         lastTimeStamp = block.timestamp;
         coinFlipResult = lastTimeStamp % 2;
         if (entrantsGuess == coinFlipResult) {

@@ -16,7 +16,7 @@ interface networkConfigItem {
     callbackGasLimit?: string
     interval?: number
     blockConfirmations?: number
-    minimumWager?: BigInt
+    minimumWager?: bigInt
 }
 
 export interface networkConfigInfo {
