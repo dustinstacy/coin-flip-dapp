@@ -56,4 +56,24 @@ contract CoinFlip {
         }
         emit CoinFlipResult(entrantsGuess, coinFlipResult);
     }
+
+    ///////////////////////
+    /// Getter Functions///
+    ///////////////////////
+
+    function getOwner() public view returns (address) {
+        return i_owner;
+    }
+
+    function getMinimumWager() public view returns (uint256) {
+        return i_minimumWager;
+    }
+
+    function getLastTimeStamp() public view returns (uint256) {
+        return lastTimeStamp;
+    }
+
+    function getCoinFlipResult() public view returns (uint256) {
+        return coinFlipResult;
+    }
 }
