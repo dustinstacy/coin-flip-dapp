@@ -1,6 +1,6 @@
 import { Address } from 'hardhat-deploy/dist/types'
 import { CoinFlip } from '../typechain-types'
-import { Signer } from 'ethers'
+import { ContractTransactionReceipt, Signer } from 'ethers'
 import { deployments, ethers, network } from 'hardhat'
 import { expect } from 'chai'
 import { networkConfig } from '../helper-hardhat-config'
@@ -9,9 +9,11 @@ import { TypedContractEvent } from '../typechain-types/common'
 describe('Coin Flip Dapp', () => {
     let coinFlipContract: CoinFlip
     let coinFlipAddress: Address
+    let coinFlip: CoinFlip
     let deployer: Signer
     let entrant: Signer
     let minimumWager: bigint
+    let gasCost: bigint
 
     const HEADS = 0
     const TAILS = 1
@@ -69,7 +71,7 @@ describe('Coin Flip Dapp', () => {
 
     describe('fulfillRandomCoinFlipResult', () => {
         beforeEach(async () => {
-            const fundingTx = await coinFlipContract.fundContract({
+            await coinFlipContract.fundContract({
                 value: ethers.parseEther('10'),
             })
         })
@@ -78,11 +80,12 @@ describe('Coin Flip Dapp', () => {
             const coinFlipResultEvent: TypedContractEvent =
                 coinFlipContract.filters['CoinFlipResult']
             const startingTimeStamp = await coinFlipContract.getLastTimeStamp()
-            coinFlipContract.connect(entrant)
-            const tx = await coinFlipContract.enterWager(HEADS, {
+            coinFlip = coinFlipContract.connect(entrant)
+            const tx = await coinFlip.enterWager(HEADS, {
                 value: minimumWager,
             })
             const txReceipt = await tx.wait(1)
+            await network.provider.send('evm_mine', [])
 
             await new Promise(async (resolve, reject) => {
                 coinFlipContract.once(coinFlipResultEvent, async (entrantsGuess, result) => {
@@ -99,10 +102,12 @@ describe('Coin Flip Dapp', () => {
                         console.log(`ending balance: ${endingBalance}`)
                         if (entrantsGuess == result) {
                             console.log('won')
-                            expect(endingBalance).to.equal(startingBalance + minimumWager)
+                            expect(endingBalance).to.equal(
+                                startingBalance + minimumWager * BigInt(2) - gasCost
+                            )
                         } else {
                             console.log('lost')
-                            expect(endingBalance).to.equal(startingBalance - minimumWager)
+                            expect(endingBalance).to.equal(startingBalance - gasCost)
                         }
                         resolve(null)
                     } catch (e) {
@@ -110,11 +115,15 @@ describe('Coin Flip Dapp', () => {
                     }
                 })
                 const startingBalance = await ethers.provider.getBalance(entrant)
-                const resultTx = await coinFlipContract.fulfillRandomCoinFlipResult(
+                const resultTx = await coinFlip.fulfillRandomCoinFlipResult(
                     entrant,
                     minimumWager,
                     HEADS
                 )
+                const resultTxReceipt = await resultTx.wait(1)
+                let { gasUsed, gasPrice } = resultTxReceipt as ContractTransactionReceipt
+                gasCost = gasUsed * gasPrice
+                await network.provider.send('evm_mine', [])
             })
         })
     })
