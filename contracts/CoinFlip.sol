@@ -34,18 +34,15 @@ contract CoinFlip {
 
     function fundContract() public payable {}
 
-    function enterWager(uint256 entrantsGuess) public payable {
+    function enterWager(
+        uint256 entrantsGuess,
+        uint256 entrantsWager,
+        address entrant
+    ) public payable {
         if (msg.value < i_minimumWager) {
             revert CoinFlip__NotEnoughWagered(i_minimumWager, msg.value);
         }
         emit WagerEntered(msg.sender, msg.value, entrantsGuess);
-    }
-
-    function fulfillRandomCoinFlipResult(
-        address entrant,
-        uint256 entrantsWager,
-        uint256 entrantsGuess
-    ) public {
         lastTimeStamp = block.timestamp;
         coinFlipResult = lastTimeStamp % 2;
         if (entrantsGuess == coinFlipResult) {
@@ -54,7 +51,6 @@ contract CoinFlip {
                 revert CoinFlip__TransferFailed();
             }
         }
-        emit CoinFlipResult(entrantsGuess, coinFlipResult);
     }
 
     ///////////////////////
