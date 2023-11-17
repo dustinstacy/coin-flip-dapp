@@ -7,6 +7,7 @@ pragma solidity ^0.8.19;
 
 error CoinFlip__NotEnoughWagered(uint256 minimum, uint256 sent);
 error CoinFlip__TransferFailed();
+error CoinFlip__NotOwner();
 
 contract CoinFlip {
     address private immutable i_owner;
@@ -26,6 +27,13 @@ contract CoinFlip {
         i_minimumWager = minimumWager;
         i_owner = msg.sender;
         lastTimeStamp = block.timestamp;
+    }
+
+    modifier onlyOwner() {
+        if (msg.sender != i_owner) {
+            revert CoinFlip__NotOwner();
+        }
+        _;
     }
 
     //////////////////////
