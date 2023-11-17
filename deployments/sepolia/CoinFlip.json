@@ -1,11 +1,11 @@
 {
-  "address": "0x3117f23eE97E54371d6FFB63B9e30a5f6062b611",
+  "address": "0xE215f65D9160A9cf90a2352b3c9ed65a085b062d",
   "abi": [
     {
       "inputs": [
         {
           "internalType": "uint256",
-          "name": "minimumWager_",
+          "name": "minimumWager",
           "type": "uint256"
         }
       ],
@@ -62,13 +62,13 @@
           "type": "address"
         },
         {
-          "indexed": false,
+          "indexed": true,
           "internalType": "uint256",
           "name": "entrantsWager",
           "type": "uint256"
         },
         {
-          "indexed": false,
+          "indexed": true,
           "internalType": "uint256",
           "name": "entrantsGuess",
           "type": "uint256"
@@ -83,38 +83,107 @@
           "internalType": "uint256",
           "name": "entrantsGuess",
           "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "entrantsWager",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "entrant",
+          "type": "address"
         }
       ],
       "name": "enterWager",
       "outputs": [],
       "stateMutability": "payable",
       "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "fundContract",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getCoinFlipResult",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getLastTimeStamp",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getMinimumWager",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getOwner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
     }
   ],
-  "transactionHash": "0xa51f7aab1c29e1701046cbf86ed884259fec10c984aa02a3290197dcf630ca90",
+  "transactionHash": "0xfc333d86ac34ec5be828f4da35a7217cc17e39e8fe8c623a52c16b092446ed11",
   "receipt": {
     "to": null,
     "from": "0x3ef270a74CaAe5Ca4b740a66497085abBf236655",
-    "contractAddress": "0x3117f23eE97E54371d6FFB63B9e30a5f6062b611",
-    "transactionIndex": 33,
-    "gasUsed": "283826",
+    "contractAddress": "0xE215f65D9160A9cf90a2352b3c9ed65a085b062d",
+    "transactionIndex": 50,
+    "gasUsed": "404546",
     "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-    "blockHash": "0x564b0d152b598e5d0333d0121bc924b229bca3cef65a53165aa68d879846d9e5",
-    "transactionHash": "0xa51f7aab1c29e1701046cbf86ed884259fec10c984aa02a3290197dcf630ca90",
+    "blockHash": "0x5b8665a2e974d98d1f82437907afc532d99e6e6764ebe373f38b297df76b3907",
+    "transactionHash": "0xfc333d86ac34ec5be828f4da35a7217cc17e39e8fe8c623a52c16b092446ed11",
     "logs": [],
-    "blockNumber": 4654815,
-    "cumulativeGasUsed": "6605158",
+    "blockNumber": 4694584,
+    "cumulativeGasUsed": "5061273",
     "status": 1,
     "byzantium": true
   },
   "args": [
     "100000000000000000"
   ],
-  "numDeployments": 1,
-  "solcInputHash": "5ac81f0a774db6086810fb3d55ec1adc",
-  "metadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"minimumWager_\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"minimum\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"sent\",\"type\":\"uint256\"}],\"name\":\"CoinFlip__NotEnoughWagered\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"CoinFlip__TransferFailed\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"entrantsGuess\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"result\",\"type\":\"uint256\"}],\"name\":\"CoinFlipResult\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"entrant\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"entrantsWager\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"entrantsGuess\",\"type\":\"uint256\"}],\"name\":\"WagerEntered\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"entrantsGuess\",\"type\":\"uint256\"}],\"name\":\"enterWager\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"errors\":{\"CoinFlip__NotEnoughWagered(uint256,uint256)\":[{\"notice\":\"Custom Errors ///\"}]},\"kind\":\"user\",\"methods\":{\"enterWager(uint256)\":{\"notice\":\"Main Functions ///\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/CoinFlip.sol\":\"CoinFlip\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"contracts/CoinFlip.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.19;\\n\\n/////////////////////\\n/// Custom Errors ///\\n/////////////////////\\n\\nerror CoinFlip__NotEnoughWagered(uint256 minimum, uint256 sent);\\nerror CoinFlip__TransferFailed();\\n\\ncontract CoinFlip {\\n    uint256 private immutable _minimumWager;\\n    uint256 private coinFlipResult;\\n    uint256 private lastTimeStamp;\\n\\n    event WagerEntered(\\n        address indexed entrant,\\n        uint256 entrantsWager,\\n        uint256 entrantsGuess\\n    );\\n\\n    event CoinFlipResult(uint256 entrantsGuess, uint256 result);\\n\\n    constructor(uint256 minimumWager_) {\\n        _minimumWager = minimumWager_;\\n    }\\n\\n    //////////////////////\\n    /// Main Functions ///\\n    //////////////////////\\n\\n    function enterWager(uint256 entrantsGuess) public payable {\\n        if (msg.value < _minimumWager) {\\n            revert CoinFlip__NotEnoughWagered(_minimumWager, msg.value);\\n        }\\n        lastTimeStamp = block.timestamp;\\n        coinFlipResult = lastTimeStamp % 2;\\n        emit WagerEntered(msg.sender, msg.value, entrantsGuess);\\n        fulfillRandomCoinFlipResult(msg.sender, msg.value, entrantsGuess);\\n    }\\n\\n    function fulfillRandomCoinFlipResult(\\n        address entrant,\\n        uint256 entrantsWager,\\n        uint256 entrantsGuess\\n    ) private {\\n        if (entrantsGuess == coinFlipResult) {\\n            (bool success, ) = entrant.call{value: entrantsWager * 2}(\\\"\\\");\\n            if (!success) {\\n                revert CoinFlip__TransferFailed();\\n            }\\n        }\\n        emit CoinFlipResult(entrantsGuess, coinFlipResult);\\n    }\\n}\\n\",\"keccak256\":\"0x8dbe790475d95246e54735cc2eebdad76f4ab74284e0bc54c90cf63768364ddc\",\"license\":\"MIT\"}},\"version\":1}",
-  "bytecode": "0x60a060405234801561001057600080fd5b506040516104ef3803806104ef8339818101604052810190610032919061007b565b8060808181525050506100a8565b600080fd5b6000819050919050565b61005881610045565b811461006357600080fd5b50565b6000815190506100758161004f565b92915050565b60006020828403121561009157610090610040565b5b600061009f84828501610066565b91505092915050565b6080516104276100c86000396000818160410152606901526104276000f3fe60806040526004361061001e5760003560e01c8063860a069414610023575b600080fd5b61003d60048036038101906100389190610275565b61003f565b005b7f00000000000000000000000000000000000000000000000000000000000000003410156100c6577f0000000000000000000000000000000000000000000000000000000000000000346040517fa08b4f670000000000000000000000000000000000000000000000000000000081526004016100bd9291906102b1565b60405180910390fd5b4260018190555060026001546100dc9190610309565b6000819055503373ffffffffffffffffffffffffffffffffffffffff167ff755ecaf3a1f0184d84dd3c4098aa02d8e54070ee3cc691e1c7fa63ca28e2ed2348360405161012a9291906102b1565b60405180910390a261013d333483610140565b50565b60005481036101fa5760008373ffffffffffffffffffffffffffffffffffffffff1660028461016f9190610369565b60405161017b906103dc565b60006040518083038185875af1925050503d80600081146101b8576040519150601f19603f3d011682016040523d82523d6000602084013e6101bd565b606091505b50509050806101f8576040517f3d85c9d500000000000000000000000000000000000000000000000000000000815260040160405180910390fd5b505b7fee48f52b31d1fcac5d219c1b96459ab86b6bc8ab4dd1e1702628ec965f9610088160005460405161022d9291906102b1565b60405180910390a1505050565b600080fd5b6000819050919050565b6102528161023f565b811461025d57600080fd5b50565b60008135905061026f81610249565b92915050565b60006020828403121561028b5761028a61023a565b5b600061029984828501610260565b91505092915050565b6102ab8161023f565b82525050565b60006040820190506102c660008301856102a2565b6102d360208301846102a2565b9392505050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052601260045260246000fd5b60006103148261023f565b915061031f8361023f565b92508261032f5761032e6102da565b5b828206905092915050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052601160045260246000fd5b60006103748261023f565b915061037f8361023f565b925082820261038d8161023f565b915082820484148315176103a4576103a361033a565b5b5092915050565b600081905092915050565b50565b60006103c66000836103ab565b91506103d1826103b6565b600082019050919050565b60006103e7826103b9565b915081905091905056fea2646970667358221220374a53e48e04d88eec54da23d6e7f021bc7846ceeb1c1528e38bdea1431e255164736f6c63430008130033",
-  "deployedBytecode": "0x60806040526004361061001e5760003560e01c8063860a069414610023575b600080fd5b61003d60048036038101906100389190610275565b61003f565b005b7f00000000000000000000000000000000000000000000000000000000000000003410156100c6577f0000000000000000000000000000000000000000000000000000000000000000346040517fa08b4f670000000000000000000000000000000000000000000000000000000081526004016100bd9291906102b1565b60405180910390fd5b4260018190555060026001546100dc9190610309565b6000819055503373ffffffffffffffffffffffffffffffffffffffff167ff755ecaf3a1f0184d84dd3c4098aa02d8e54070ee3cc691e1c7fa63ca28e2ed2348360405161012a9291906102b1565b60405180910390a261013d333483610140565b50565b60005481036101fa5760008373ffffffffffffffffffffffffffffffffffffffff1660028461016f9190610369565b60405161017b906103dc565b60006040518083038185875af1925050503d80600081146101b8576040519150601f19603f3d011682016040523d82523d6000602084013e6101bd565b606091505b50509050806101f8576040517f3d85c9d500000000000000000000000000000000000000000000000000000000815260040160405180910390fd5b505b7fee48f52b31d1fcac5d219c1b96459ab86b6bc8ab4dd1e1702628ec965f9610088160005460405161022d9291906102b1565b60405180910390a1505050565b600080fd5b6000819050919050565b6102528161023f565b811461025d57600080fd5b50565b60008135905061026f81610249565b92915050565b60006020828403121561028b5761028a61023a565b5b600061029984828501610260565b91505092915050565b6102ab8161023f565b82525050565b60006040820190506102c660008301856102a2565b6102d360208301846102a2565b9392505050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052601260045260246000fd5b60006103148261023f565b915061031f8361023f565b92508261032f5761032e6102da565b5b828206905092915050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052601160045260246000fd5b60006103748261023f565b915061037f8361023f565b925082820261038d8161023f565b915082820484148315176103a4576103a361033a565b5b5092915050565b600081905092915050565b50565b60006103c66000836103ab565b91506103d1826103b6565b600082019050919050565b60006103e7826103b9565b915081905091905056fea2646970667358221220374a53e48e04d88eec54da23d6e7f021bc7846ceeb1c1528e38bdea1431e255164736f6c63430008130033",
+  "numDeployments": 2,
+  "solcInputHash": "004115605a3d9139ae24283520b4ac7e",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"minimumWager\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"minimum\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"sent\",\"type\":\"uint256\"}],\"name\":\"CoinFlip__NotEnoughWagered\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"CoinFlip__TransferFailed\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"entrantsGuess\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"result\",\"type\":\"uint256\"}],\"name\":\"CoinFlipResult\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"entrant\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"entrantsWager\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"entrantsGuess\",\"type\":\"uint256\"}],\"name\":\"WagerEntered\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"entrantsGuess\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"entrantsWager\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"entrant\",\"type\":\"address\"}],\"name\":\"enterWager\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"fundContract\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getCoinFlipResult\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getLastTimeStamp\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getMinimumWager\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getOwner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"errors\":{\"CoinFlip__NotEnoughWagered(uint256,uint256)\":[{\"notice\":\"Custom Errors ///\"}]},\"kind\":\"user\",\"methods\":{\"fundContract()\":{\"notice\":\"Main Functions ///\"},\"getOwner()\":{\"notice\":\"Getter Functions///\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/CoinFlip.sol\":\"CoinFlip\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"contracts/CoinFlip.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.19;\\n\\n/////////////////////\\n/// Custom Errors ///\\n/////////////////////\\n\\nerror CoinFlip__NotEnoughWagered(uint256 minimum, uint256 sent);\\nerror CoinFlip__TransferFailed();\\n\\ncontract CoinFlip {\\n    address private immutable i_owner;\\n    uint256 private immutable i_minimumWager;\\n    uint256 private lastTimeStamp;\\n    uint256 private coinFlipResult;\\n\\n    event WagerEntered(\\n        address indexed entrant,\\n        uint256 indexed entrantsWager,\\n        uint256 indexed entrantsGuess\\n    );\\n\\n    event CoinFlipResult(uint256 entrantsGuess, uint256 result);\\n\\n    constructor(uint256 minimumWager) {\\n        i_minimumWager = minimumWager;\\n        i_owner = msg.sender;\\n        lastTimeStamp = block.timestamp;\\n    }\\n\\n    //////////////////////\\n    /// Main Functions ///\\n    //////////////////////\\n\\n    function fundContract() public payable {}\\n\\n    function enterWager(\\n        uint256 entrantsGuess,\\n        uint256 entrantsWager,\\n        address entrant\\n    ) public payable {\\n        if (msg.value < i_minimumWager) {\\n            revert CoinFlip__NotEnoughWagered(i_minimumWager, msg.value);\\n        }\\n        emit WagerEntered(msg.sender, msg.value, entrantsGuess);\\n        lastTimeStamp = block.timestamp;\\n        coinFlipResult = lastTimeStamp % 2;\\n        if (entrantsGuess == coinFlipResult) {\\n            (bool success, ) = entrant.call{value: entrantsWager * 2}(\\\"\\\");\\n            if (!success) {\\n                revert CoinFlip__TransferFailed();\\n            }\\n        }\\n    }\\n\\n    ///////////////////////\\n    /// Getter Functions///\\n    ///////////////////////\\n\\n    function getOwner() public view returns (address) {\\n        return i_owner;\\n    }\\n\\n    function getMinimumWager() public view returns (uint256) {\\n        return i_minimumWager;\\n    }\\n\\n    function getLastTimeStamp() public view returns (uint256) {\\n        return lastTimeStamp;\\n    }\\n\\n    function getCoinFlipResult() public view returns (uint256) {\\n        return coinFlipResult;\\n    }\\n}\\n\",\"keccak256\":\"0x7c43995730ddbfcb4a4ab472fd4af6d572f3d5cbc9b2287237749bec227e7395\",\"license\":\"MIT\"}},\"version\":1}",
+  "bytecode": "0x60c060405234801561001057600080fd5b50604051610704380380610704833981810160405281019061003291906100b6565b8060a081815250503373ffffffffffffffffffffffffffffffffffffffff1660808173ffffffffffffffffffffffffffffffffffffffff168152505042600081905550506100e3565b600080fd5b6000819050919050565b61009381610080565b811461009e57600080fd5b50565b6000815190506100b08161008a565b92915050565b6000602082840312156100cc576100cb61007b565b5b60006100da848285016100a1565b91505092915050565b60805160a0516105ee61011660003960008181610138015281816101600152610314015260006102e101526105ee6000f3fe6080604052600436106100555760003560e01c8063290857051461005a57806357542dae14610085578063893d20e8146100a1578063bd097e21146100cc578063c1c244e8146100d6578063f48409e914610101575b600080fd5b34801561006657600080fd5b5061006f61012c565b60405161007c9190610351565b60405180910390f35b61009f600480360381019061009a91906103fb565b610136565b005b3480156100ad57600080fd5b506100b66102dd565b6040516100c3919061045d565b60405180910390f35b6100d4610305565b005b3480156100e257600080fd5b506100eb610307565b6040516100f89190610351565b60405180910390f35b34801561010d57600080fd5b50610116610310565b6040516101239190610351565b60405180910390f35b6000600154905090565b7f00000000000000000000000000000000000000000000000000000000000000003410156101bd577f0000000000000000000000000000000000000000000000000000000000000000346040517fa08b4f670000000000000000000000000000000000000000000000000000000081526004016101b4929190610478565b60405180910390fd5b82343373ffffffffffffffffffffffffffffffffffffffff167ff755ecaf3a1f0184d84dd3c4098aa02d8e54070ee3cc691e1c7fa63ca28e2ed260405160405180910390a442600081905550600260005461021891906104d0565b60018190555060015483036102d85760008173ffffffffffffffffffffffffffffffffffffffff1660028461024d9190610530565b604051610259906105a3565b60006040518083038185875af1925050503d8060008114610296576040519150601f19603f3d011682016040523d82523d6000602084013e61029b565b606091505b50509050806102d6576040517f3d85c9d500000000000000000000000000000000000000000000000000000000815260040160405180910390fd5b505b505050565b60007f0000000000000000000000000000000000000000000000000000000000000000905090565b565b60008054905090565b60007f0000000000000000000000000000000000000000000000000000000000000000905090565b6000819050919050565b61034b81610338565b82525050565b60006020820190506103666000830184610342565b92915050565b600080fd5b61037a81610338565b811461038557600080fd5b50565b60008135905061039781610371565b92915050565b600073ffffffffffffffffffffffffffffffffffffffff82169050919050565b60006103c88261039d565b9050919050565b6103d8816103bd565b81146103e357600080fd5b50565b6000813590506103f5816103cf565b92915050565b6000806000606084860312156104145761041361036c565b5b600061042286828701610388565b935050602061043386828701610388565b9250506040610444868287016103e6565b9150509250925092565b610457816103bd565b82525050565b6000602082019050610472600083018461044e565b92915050565b600060408201905061048d6000830185610342565b61049a6020830184610342565b9392505050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052601260045260246000fd5b60006104db82610338565b91506104e683610338565b9250826104f6576104f56104a1565b5b828206905092915050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052601160045260246000fd5b600061053b82610338565b915061054683610338565b925082820261055481610338565b9150828204841483151761056b5761056a610501565b5b5092915050565b600081905092915050565b50565b600061058d600083610572565b91506105988261057d565b600082019050919050565b60006105ae82610580565b915081905091905056fea26469706673582212209a0685c83f66104d87a4a2e2cf6b6eeb4f78faa7fb4a3ca3eb7b3157b64a7bbe64736f6c63430008130033",
+  "deployedBytecode": "0x6080604052600436106100555760003560e01c8063290857051461005a57806357542dae14610085578063893d20e8146100a1578063bd097e21146100cc578063c1c244e8146100d6578063f48409e914610101575b600080fd5b34801561006657600080fd5b5061006f61012c565b60405161007c9190610351565b60405180910390f35b61009f600480360381019061009a91906103fb565b610136565b005b3480156100ad57600080fd5b506100b66102dd565b6040516100c3919061045d565b60405180910390f35b6100d4610305565b005b3480156100e257600080fd5b506100eb610307565b6040516100f89190610351565b60405180910390f35b34801561010d57600080fd5b50610116610310565b6040516101239190610351565b60405180910390f35b6000600154905090565b7f00000000000000000000000000000000000000000000000000000000000000003410156101bd577f0000000000000000000000000000000000000000000000000000000000000000346040517fa08b4f670000000000000000000000000000000000000000000000000000000081526004016101b4929190610478565b60405180910390fd5b82343373ffffffffffffffffffffffffffffffffffffffff167ff755ecaf3a1f0184d84dd3c4098aa02d8e54070ee3cc691e1c7fa63ca28e2ed260405160405180910390a442600081905550600260005461021891906104d0565b60018190555060015483036102d85760008173ffffffffffffffffffffffffffffffffffffffff1660028461024d9190610530565b604051610259906105a3565b60006040518083038185875af1925050503d8060008114610296576040519150601f19603f3d011682016040523d82523d6000602084013e61029b565b606091505b50509050806102d6576040517f3d85c9d500000000000000000000000000000000000000000000000000000000815260040160405180910390fd5b505b505050565b60007f0000000000000000000000000000000000000000000000000000000000000000905090565b565b60008054905090565b60007f0000000000000000000000000000000000000000000000000000000000000000905090565b6000819050919050565b61034b81610338565b82525050565b60006020820190506103666000830184610342565b92915050565b600080fd5b61037a81610338565b811461038557600080fd5b50565b60008135905061039781610371565b92915050565b600073ffffffffffffffffffffffffffffffffffffffff82169050919050565b60006103c88261039d565b9050919050565b6103d8816103bd565b81146103e357600080fd5b50565b6000813590506103f5816103cf565b92915050565b6000806000606084860312156104145761041361036c565b5b600061042286828701610388565b935050602061043386828701610388565b9250506040610444868287016103e6565b9150509250925092565b610457816103bd565b82525050565b6000602082019050610472600083018461044e565b92915050565b600060408201905061048d6000830185610342565b61049a6020830184610342565b9392505050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052601260045260246000fd5b60006104db82610338565b91506104e683610338565b9250826104f6576104f56104a1565b5b828206905092915050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052601160045260246000fd5b600061053b82610338565b915061054683610338565b925082820261055481610338565b9150828204841483151761056b5761056a610501565b5b5092915050565b600081905092915050565b50565b600061058d600083610572565b91506105988261057d565b600082019050919050565b60006105ae82610580565b915081905091905056fea26469706673582212209a0685c83f66104d87a4a2e2cf6b6eeb4f78faa7fb4a3ca3eb7b3157b64a7bbe64736f6c63430008130033",
   "devdoc": {
     "kind": "dev",
     "methods": {},
@@ -130,8 +199,11 @@
     },
     "kind": "user",
     "methods": {
-      "enterWager(uint256)": {
+      "fundContract()": {
         "notice": "Main Functions ///"
+      },
+      "getOwner()": {
+        "notice": "Getter Functions///"
       }
     },
     "version": 1
@@ -139,17 +211,17 @@
   "storageLayout": {
     "storage": [
       {
-        "astId": 14,
+        "astId": 16,
         "contract": "contracts/CoinFlip.sol:CoinFlip",
-        "label": "coinFlipResult",
+        "label": "lastTimeStamp",
         "offset": 0,
         "slot": "0",
         "type": "t_uint256"
       },
       {
-        "astId": 16,
+        "astId": 18,
         "contract": "contracts/CoinFlip.sol:CoinFlip",
-        "label": "lastTimeStamp",
+        "label": "coinFlipResult",
         "offset": 0,
         "slot": "1",
         "type": "t_uint256"

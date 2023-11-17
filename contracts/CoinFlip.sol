@@ -32,7 +32,7 @@ contract CoinFlip {
     /// Main Functions ///
     //////////////////////
 
-    function fundContract() public payable {}
+    function fund() public payable {}
 
     function enterWager(
         uint256 entrantsGuess,
@@ -51,6 +51,14 @@ contract CoinFlip {
                 revert CoinFlip__TransferFailed();
             }
         }
+    }
+
+    receive() external payable {
+        fund();
+    }
+
+    fallback() external payable {
+        fund();
     }
 
     ///////////////////////
