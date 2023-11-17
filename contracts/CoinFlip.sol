@@ -8,6 +8,7 @@ pragma solidity ^0.8.19;
 error CoinFlip__NotEnoughWagered(uint256 minimum, uint256 sent);
 error CoinFlip__TransferFailed();
 error CoinFlip__NotOwner();
+error CoinFlip__NoBalance();
 
 contract CoinFlip {
     address private immutable i_owner;
@@ -23,11 +24,7 @@ contract CoinFlip {
 
     event CoinFlipResult(uint256 entrantsGuess, uint256 result);
 
-    constructor(uint256 minimumWager) {
-        i_minimumWager = minimumWager;
-        i_owner = msg.sender;
-        lastTimeStamp = block.timestamp;
-    }
+    mapping(address => uint256) private _balances;
 
     modifier onlyOwner() {
         if (msg.sender != i_owner) {
@@ -36,11 +33,19 @@ contract CoinFlip {
         _;
     }
 
+    constructor(uint256 minimumWager) {
+        i_minimumWager = minimumWager;
+        i_owner = msg.sender;
+        lastTimeStamp = block.timestamp;
+    }
+
     //////////////////////
     /// Main Functions ///
     //////////////////////
 
-    function fund() public payable {}
+    function fund() public payable {
+        _balances[i_owner] = _balances[i_owner] + msg.value;
+    }
 
     function enterWager(uint256 entrantsGuess) public payable {
         if (msg.value < i_minimumWager) {
@@ -50,18 +55,21 @@ contract CoinFlip {
         lastTimeStamp = block.timestamp;
         coinFlipResult = lastTimeStamp % 2;
         if (entrantsGuess == coinFlipResult) {
-            (bool success, ) = msg.sender.call{value: msg.value * 2}("");
-            if (!success) {
-                revert CoinFlip__TransferFailed();
-            }
+            _balances[msg.sender] = _balances[msg.sender] + (msg.value * 2);
+            _balances[i_owner] = _balances[i_owner] - (msg.value * 2);
         }
     }
 
-    function withdraw() public onlyOwner {
-        (bool callSuccess, ) = payable(msg.sender).call{
-            value: address(this).balance
-        }("");
-        require(callSuccess, "Call failed");
+    function withdrawProceeds() external {
+        uint256 balance = _balances[msg.sender];
+        if (balance <= 0) {
+            revert CoinFlip__NoBalance();
+        }
+        _balances[msg.sender] = 0;
+        (bool success, ) = payable(msg.sender).call{value: balance}("");
+        if (!success) {
+            revert CoinFlip__TransferFailed();
+        }
     }
 
     ///////////////////////
@@ -82,5 +90,9 @@ contract CoinFlip {
 
     function getCoinFlipResult() public view returns (uint256) {
         return coinFlipResult;
+    }
+
+    function getBalance(address account) public view returns (uint256) {
+        return _balances[account];
     }
 }
