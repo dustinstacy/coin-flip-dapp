@@ -1,0 +1,35 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/CoinFlip.sol": {
+      "content": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.19;\n\n/////////////////////\n/// Custom Errors ///\n/////////////////////\n\nerror CoinFlip__NotEnoughWagered(uint256 minimum, uint256 sent);\nerror CoinFlip__TransferFailed();\n\ncontract CoinFlip {\n    address private immutable i_owner;\n    uint256 private immutable i_minimumWager;\n    uint256 private lastTimeStamp;\n    uint256 private coinFlipResult;\n\n    event WagerEntered(\n        address indexed entrant,\n        uint256 indexed entrantsWager,\n        uint256 indexed entrantsGuess\n    );\n\n    event CoinFlipResult(uint256 entrantsGuess, uint256 result);\n\n    constructor(uint256 minimumWager) {\n        i_minimumWager = minimumWager;\n        i_owner = msg.sender;\n        lastTimeStamp = block.timestamp;\n    }\n\n    //////////////////////\n    /// Main Functions ///\n    //////////////////////\n\n    function fund() public payable {}\n\n    function enterWager(uint256 entrantsGuess) public payable {\n        if (msg.value < i_minimumWager) {\n            revert CoinFlip__NotEnoughWagered(i_minimumWager, msg.value);\n        }\n        emit WagerEntered(msg.sender, msg.value, entrantsGuess);\n        lastTimeStamp = block.timestamp;\n        coinFlipResult = lastTimeStamp % 2;\n        if (entrantsGuess == coinFlipResult) {\n            (bool success, ) = msg.sender.call{value: msg.value * 2}(\"\");\n            if (!success) {\n                revert CoinFlip__TransferFailed();\n            }\n        }\n    }\n\n    ///////////////////////\n    /// Getter Functions///\n    ///////////////////////\n\n    function getOwner() public view returns (address) {\n        return i_owner;\n    }\n\n    function getMinimumWager() public view returns (uint256) {\n        return i_minimumWager;\n    }\n\n    function getLastTimeStamp() public view returns (uint256) {\n        return lastTimeStamp;\n    }\n\n    function getCoinFlipResult() public view returns (uint256) {\n        return coinFlipResult;\n    }\n}\n"
+    }
+  },
+  "settings": {
+    "optimizer": {
+      "enabled": false,
+      "runs": 200
+    },
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode",
+          "evm.deployedBytecode",
+          "evm.methodIdentifiers",
+          "metadata",
+          "devdoc",
+          "userdoc",
+          "storageLayout",
+          "evm.gasEstimates"
+        ],
+        "": [
+          "ast"
+        ]
+      }
+    },
+    "metadata": {
+      "useLiteralContent": true
+    }
+  }
+}
